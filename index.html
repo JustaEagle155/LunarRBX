@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunarRBX Executor</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: #f1faee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundAnimation 10s infinite alternate;
+            transition: background 0.3s ease;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            }
+
+            50% {
+                background: linear-gradient(120deg, #141e30, #243b55);
+            }
+
+            100% {
+                background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            }
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 1.5em;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        main {
+            z-index: 1;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .product {
+            margin: 3em auto;
+            padding: 2em;
+            background: rgba(255, 255, 255, 0.97);
+            color: #0f2027;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInProduct 2s ease-out forwards;
+        }
+
+        @keyframes fadeInProduct {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        .product h2 {
+            margin-top: 0;
+            font-size: 2.5em;
+            transition: color 0.3s ease;
+        }
+
+            .product h2:hover {
+                color: #00bcd4;
+            }
+
+        .product p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .product button {
+            background: #2563eb;
+            border: none;
+            color: #fff;
+            padding: 0.8em 2em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+            .product button:hover {
+                background: #1d4ed8;
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+
+        footer {
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            text-align: center;
+            padding: 1.5em;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
+            animation: fadeInFooter 2s ease-out;
+        }
+
+        @keyframes fadeInFooter {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+            animation: glowText 1.5s infinite alternate;
+        }
+
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00bcd4, 0 0 20px #00bcd4, 0 0 25px #00bcd4;
+            }
+
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00bcd4, 0 0 40px #00bcd4, 0 0 50px #00bcd4;
+            }
+        }
+
+        .animated-text {
+            font-size: 1.8em;
+            color: #fff;
+            animation: textGlow 1.5s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00bcd4, 0 0 20px #00bcd4;
+            }
+
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00bcd4, 0 0 40px #00bcd4;
+            }
+        }
+
+        .background-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+            pointer-events: none;
+            animation: pulseBackground 5s infinite alternate;
+        }
+
+        @keyframes pulseBackground {
+            0% {
+                background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+            }
+
+            100% {
+                background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 60%);
+            }
+        }
+
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.example.com/your-image.jpg') center center / cover no-repeat;
+            z-index: -1;
+            animation: parallaxAnimation 15s infinite linear;
+        }
+
+        @keyframes parallaxAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax"></div>
+    <div class="background-visual"></div>
+    <header>
+        <h1>LunarRBX Executor</h1>
+    </header>
+    <main>
+        <p class="animated-text">Have the best Roblox experience</p>
+        <section id="purchase">
+            <div class="product">
+                <h2>Download LunarRBX</h2>
+                <p>The best free executor for Roblox. Enhance your gaming experience now with LunarRBX. Easy to use, powerful, and completely free!</p>
+                <button onclick="window.location.href='https://welcome.com'">Download Now</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 LunarRBX. All rights reserved.</p>
+    </footer>
+</body>
+</html>
